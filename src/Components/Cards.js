@@ -1,8 +1,6 @@
-import { price } from "../utils/constants";
-
 const Cards = (props) => {
   const Price = 149;
-  ({ image, caloriesPerServing, prepTimeMinutes, rating, name } = props.objaa);
+  const { image, caloriesPerServing, prepTimeMinutes, rating, name } = props.objaa;
 
   return (
     <div id="card">

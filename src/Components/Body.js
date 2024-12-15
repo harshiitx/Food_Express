@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import Shimmer from "./Shimmer.js";
 import Cards from "./Cards";
-import { price } from "../utils/constants.js";
+import useOnlineStatus from "../utils/useOnlineStatus.js";
+import Offline from "./Offline.js";
 
 const Body = () => {
   const [DATA_ARRAY, setDATA_ARRAY] = useState([]);
@@ -51,6 +52,10 @@ const Body = () => {
     setFILTERED_ARRAY(newArr);
   };
   
+  if (useOnlineStatus()==false) {
+    return <Offline/>
+  }
+
   return DATA_ARRAY.length == 0 ? (
     <Shimmer />
   ) : (

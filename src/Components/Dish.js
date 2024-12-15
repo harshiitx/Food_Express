@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import { useParams} from "react-router"
+import { useParams,Link} from "react-router"
 import DishShimmer from "./DishShimmer";
 
 
@@ -34,7 +34,7 @@ return (<div id="dish">
     <h2>at rupees 149 only</h2>
     <h3>Total Calories {caloriesPerServing}</h3>
     <p><strong>Ingredients: </strong> {ingredients} </p>
-    <button>Add to Cart 🛒 </button>
+    <Link to="/"><button>Add to Cart 🛒 </button></Link>
 </div>
 </div>)
 
