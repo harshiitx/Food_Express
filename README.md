@@ -25,15 +25,23 @@ Follow these steps to get FoodExpress up and running on your local machine:
     ```bash
     npm install -D parcel
     ```
-     ```bash
+    ```bash
     npm install react
     npm install react-dom
     npm install react-router
+    ```
+    ```bash
+    npm install @reduxjs/toolkit
+    npm install react-redux
     ```
 
 4. Start the development server:
     ```bash
     npx parcel index.html
+    ```
+    or
+   ```bash
+    npm start
     ```
 
 ## Features
