@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import Shimmer from "./Shimmer.js";
-import Cards from "./Cards";
+import Cards,{TrendingCards} from "./Cards";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 import Offline from "./Offline.js";
 
@@ -37,7 +37,6 @@ const Body = () => {
         method: "GET",
       });
       const jsonObj = await dataPromise.json();
-      // console.log(jsonObj);
       setDATA_ARRAY(jsonObj?.recipes);
       setFILTERED_ARRAY(jsonObj?.recipes);
     } catch (error) {
@@ -51,7 +50,11 @@ const Body = () => {
     );
     setFILTERED_ARRAY(newArr);
   };
-  
+
+
+  const Trending = TrendingCards(Cards);
+
+
   if (useOnlineStatus()==false) {
     return <Offline/>
   }
@@ -88,9 +91,8 @@ const Body = () => {
             className="links"
             to={{ pathname: `/dishes/${obj.id}` }}
             key={obj.id}
-            onClick={() => console.log('Passing state:', obj)}
           >
-            <Cards objaa={obj} />
+            {(obj.id%4==1)?<Trending objaa={obj}/>: <Cards objaa={obj} />}
           </Link>
 
         ))}

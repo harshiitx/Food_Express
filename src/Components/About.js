@@ -1,8 +1,14 @@
+import { useContext } from "react";
 import { Link } from "react-router";
+import DateContext from "../utils/DateContext";
 
 const About = () => {
+  const {date}= useContext(DateContext);
   return (
     <div id="About">
+      <div className="header-date">
+        Date: {date}
+      </div>
       <h1>About Us</h1>
       <p>
         Welcome to my food ordering website! My name is Harshit Bhardwaj, and I

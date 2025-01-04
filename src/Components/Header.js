@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { CART_LOGO_URL } from "../utils/constants";
 import { Link } from "react-router";
+import DateContext from "../utils/DateContext";
+import { useSelector } from "react-redux";
 /*
 -header
 --logo
@@ -10,6 +13,11 @@ import { Link } from "react-router";
 */
 
 const Header = () => {
+  const {date} = useContext(DateContext);
+
+  //Subscribing to the store using the selector
+  const cartItems = useSelector((store)=>store.cart.items);
+  // console.log(cartItems)
   return (
     <div id="Header">
       <div>
@@ -20,12 +28,16 @@ const Header = () => {
       <div>
         <ul id="Nav_items">
           <li><Link className='links' to="/">Home</Link></li>
-          <li><Link className='links' to="/">Get the app</Link></li>
-          <li><Link className='links' to="/">Become a partner</Link></li>
+          <li><Link className='links' to="/get-app">Get the app</Link></li>
         </ul>
       </div>
-      <div>
-      <Link className='links' to="/"><img id="cart" src={CART_LOGO_URL} /></Link>
+      <div className="cart-count-container">
+      <div className="cart-count">{cartItems.reduce((total,item)=>total+item.quantity,0)}</div>
+      <Link className='links' to="/cart"><img id="cart" src={CART_LOGO_URL} /></Link>
+      </div>
+
+      <div className="header-date">
+         {date}
       </div>
     </div>
   );

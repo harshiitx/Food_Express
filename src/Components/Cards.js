@@ -7,7 +7,7 @@ const Cards = (props) => {
       <img id="food_img" src={image} />
       <div id="food_detail">
         <div>{name}</div>
-        <div>price {Price} rupees only</div>
+        <div>price {Price} ₹ only</div>
         <div>delivery time {prepTimeMinutes} min</div>
         <div>Total Calories {caloriesPerServing} kcal</div>
         <div>rating {rating}🌟</div>
@@ -15,5 +15,17 @@ const Cards = (props) => {
     </div>
   );
 };
+
+export const TrendingCards = (Cards)=>{
+  return (props) =>{
+    return(
+      <>
+      <div id="trending-tag">Trending</div>
+      <Cards {...props}/>
+      </>
+    )
+  }
+}
+
 
 export default Cards;

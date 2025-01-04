@@ -3,4 +3,4 @@ export const LOGO_URL =
 export const CART_LOGO_URL =
   "https://cdn.pixabay.com/photo/2014/04/02/10/53/shopping-cart-304843_640.png";
 
-
+export const AppDownloadArr = ["Play Store","IOS App Store","Microsoft Store"];

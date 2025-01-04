@@ -1,11 +1,15 @@
 import { useState,useEffect } from "react";
 import { useParams,Link} from "react-router"
 import DishShimmer from "./DishShimmer";
+import { useDispatch } from "react-redux";
+import { addItems } from "../utils/cartSlice";
 
 
 const Dish =()=>{
 const {itemId}=useParams();
 const [DishObj,setDishObj] = useState(null);
+const dispatch = useDispatch();
+
 
 const getDish =async ()=>{
     const Dish_Promise = await fetch(`https://dummyjson.com/recipes/${itemId}`);
@@ -13,6 +17,11 @@ const getDish =async ()=>{
     setDishObj(Dish);
 }
 
+
+const handleAddToCart = ()=>{
+    //Dispatch an action
+    dispatch(addItems(DishObj));
+}
 useEffect(()=>{getDish()},[itemId])
 
 if (!DishObj) {
@@ -34,7 +43,7 @@ return (<div id="dish">
     <h2>at rupees 149 only</h2>
     <h3>Total Calories {caloriesPerServing}</h3>
     <p><strong>Ingredients: </strong> {ingredients} </p>
-    <Link to="/"><button>Add to Cart 🛒 </button></Link>
+    <button onClick={handleAddToCart}>Add to Cart 🛒 </button>
 </div>
 </div>)
 
