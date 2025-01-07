@@ -12,7 +12,7 @@ import GetApp from "./Components/GetApp";
 import DateContext from "./utils/DateContext";
 import { createBrowserRouter,RouterProvider, Outlet } from "react-router";
 import { Provider } from "react-redux";
-import appStore from "./utils/appstore";
+import appStore from "./utils/appStore";
 import Cart from "./Components/Cart";
 
 
