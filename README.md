@@ -23,16 +23,7 @@ Follow these steps to get FoodExpress up and running on your local machine:
 
 3. Install the dependencies:
     ```bash
-    npm install -D parcel
-    ```
-    ```bash
-    npm install react
-    npm install react-dom
-    npm install react-router
-    ```
-    ```bash
-    npm install @reduxjs/toolkit
-    npm install react-redux
+    npm install 
     ```
 
 4. Start the development server:
