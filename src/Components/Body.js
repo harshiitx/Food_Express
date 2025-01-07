@@ -58,7 +58,7 @@ const Body = () => {
   if (useOnlineStatus()==false) {
     return <Offline/>
   }
-
+  
   return DATA_ARRAY.length == 0 ? (
     <Shimmer />
   ) : (
