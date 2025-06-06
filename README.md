@@ -45,7 +45,7 @@ Follow these steps to get FoodExpress up and running on your local machine:
 - **Customized useOnlineStatus Hook**: Offline/online status checking with "you are offline" message when the user is offline.
 - **useState, useEffect, useParams Hooks**: Efficient state management and URL parameter handling.
 - **Context API**: Displays the current date in various components.
-
+- **Accessibility Features**: Enhanced accessibility support for better user experience across all abilities.
 
 ## Usage
 Simply navigate to the FoodExpress website to explore various food options. Use the search bar to find specific dishes or apply filters to narrow down your choices and add dishes which you like to the cart. 
