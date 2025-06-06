@@ -25,8 +25,11 @@ const App = () => {
     <Provider store={appStore}>
     <DateContext.Provider value={{date,setDate}}>
       <>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Header />
-      <Outlet/>
+      <div id="main-content">
+        <Outlet/>
+      </div>
       <Footer />
     </>
     </DateContext.Provider>

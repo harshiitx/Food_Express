@@ -28,24 +28,37 @@ if (!DishObj) {
     return (<DishShimmer/>)
 }
 const { image, caloriesPerServing, prepTimeMinutes, rating, name, ingredients } = DishObj;
-return (<div id="dish">
-<div id="left_div">
+return (
+<main id="dish" role="main" aria-label={`${name} dish details`}>
+<section id="left_div" role="region" aria-label="Dish image and quick info">
 <div id="dish_image">
-    <img src={image}/>
+    <img 
+      src={image} 
+      alt={`${name} - delicious dish ready to order`}
+      role="img" 
+    />
 </div>
-<div>
-    <h2>rating {rating}🌟</h2>
-    <h3>delivery time {prepTimeMinutes} mins</h3>
+<div role="group" aria-label="Dish ratings and delivery info">
+    <h2 role="heading" aria-level="2" aria-label={`Rating: ${rating} out of 5 stars`}>rating {rating}🌟</h2>
+    <h3 role="heading" aria-level="3" aria-label={`Delivery time: ${prepTimeMinutes} minutes`}>delivery time {prepTimeMinutes} mins</h3>
 </div>
-</div>
-<div id="right_div">
-    <h1>Get {name}</h1>
-    <h2>at rupees 149 only</h2>
-    <h3>Total Calories {caloriesPerServing}</h3>
-    <p><strong>Ingredients: </strong> {ingredients} </p>
-    <button onClick={handleAddToCart}>Add to Cart 🛒 </button>
-</div>
-</div>)
+</section>
+<section id="right_div" role="region" aria-label="Dish details and ordering">
+    <h1 role="heading" aria-level="1">Get {name}</h1>
+    <h2 role="heading" aria-level="2" aria-label="Price: 149 rupees only">at rupees 149 only</h2>
+    <h3 role="heading" aria-level="3" aria-label={`Total calories: ${caloriesPerServing} kilocalories`}>Total Calories {caloriesPerServing}</h3>
+    <p role="text" aria-label={`Ingredients: ${ingredients.join(', ')}`}>
+      <strong>Ingredients: </strong> {ingredients} 
+    </p>
+    <button 
+      onClick={handleAddToCart}
+      aria-label={`Add ${name} to cart for 149 rupees`}
+      role="button"
+    >
+      Add to Cart 🛒 
+    </button>
+</section>
+</main>)
 
 }
 

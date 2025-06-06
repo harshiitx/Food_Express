@@ -29,40 +29,77 @@ const Cart = () => {
     dispatch(addItems(itemObj));
   };
 
+  const handlePayment = (amount) => {
+    // Placeholder for payment processing
+    alert(`Processing payment of ₹${amount}. This is a demo - no actual payment will be processed.`);
+  };
+
   return (
-    <div className="cart-component">
-      <h2>Your Cart Items</h2>
+    <main className="cart-component" role="main" aria-label="Shopping cart">
+      <h1 role="heading" aria-level="1">Your Cart Items</h1>
       {cartItems.length === 0 ? (
-        <>
+        <section role="region" aria-label="Empty cart message">
           <p>Sorry, Your cart is empty.</p>
           <p>Add some items and comeback later</p>
-        </>
+        </section>
       ) : (
-        <ul>
-          {cartItems.map((itemObj) => (
-            <li key={itemObj.id} className="cart-item">
-              <div className="cart-item-name">
-                {itemObj.name + " "} X {" " + itemObj.quantity}
-              </div>
-              <div>{149 * itemObj.quantity}₹</div>
-              <button onClick={() => handleRemoveItem(itemObj)}>-</button>
-              <button onClick={() => handleAddItem(itemObj)}>+</button>
-            </li>
-          ))}
-        </ul>
+        <section role="region" aria-label="Cart items list">
+          <ul role="list" aria-label={`Shopping cart with ${cartItems.length} different items`}>
+            {cartItems.map((itemObj) => (
+              <li key={itemObj.id} className="cart-item" role="listitem">
+                <div 
+                  className="cart-item-name"
+                  role="text"
+                  aria-label={`${itemObj.name}, quantity: ${itemObj.quantity}`}
+                >
+                  {itemObj.name + " "} X {" " + itemObj.quantity}
+                </div>
+                <div role="text" aria-label={`Price: ${149 * itemObj.quantity} rupees`}>
+                  {149 * itemObj.quantity}₹
+                </div>
+                <button 
+                  onClick={() => handleRemoveItem(itemObj)}
+                  aria-label={`Remove one ${itemObj.name} from cart`}
+                  title="Remove one item"
+                >
+                  -
+                </button>
+                <button 
+                  onClick={() => handleAddItem(itemObj)}
+                  aria-label={`Add one more ${itemObj.name} to cart`}
+                  title="Add one more item"
+                >
+                  +
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
-      <div className="cart-total">
-        <h3>Total: {totalPrice} ₹ </h3>
+      <div className="cart-total" role="region" aria-label="Cart total">
+        <h2 role="heading" aria-level="2" aria-live="polite">Total: {totalPrice} ₹ </h2>
       </div>
-      <div className="cart-bottom-buttons">
+      <div className="cart-bottom-buttons" role="group" aria-label="Cart actions">
         {cartItems.length > 0 && (
           <>
-            <button onClick={handleClearCart}>Clear the Cart</button>
-            <button onClick={()=>handlePayment(totalPrice)}>Proceed to Payment</button>
+            <button 
+              onClick={handleClearCart}
+              aria-label="Clear all items from cart"
+              role="button"
+            >
+              Clear the Cart
+            </button>
+            <button 
+              onClick={()=>handlePayment(totalPrice)}
+              aria-label={`Proceed to payment for ${totalPrice} rupees`}
+              role="button"
+            >
+              Proceed to Payment
+            </button>
           </>
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

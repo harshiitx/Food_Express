@@ -17,29 +17,30 @@ const Header = () => {
 
   //Subscribing to the store using the selector
   const cartItems = useSelector((store)=>store.cart.items);
+  const cartItemCount = cartItems.reduce((total,item)=>total+item.quantity,0);
   // console.log(cartItems)
   return (
-    <div id="Header">
+    <header id="Header" role="banner" aria-label="Site header">
       <div>
-        <img id="Logo" src={LOGO_URL} />
+        <img id="Logo" src={LOGO_URL} alt="Food Express Logo" />
       </div>
 
-      <div id="title">Food Express</div>
-      <div>
-        <ul id="Nav_items">
-          <li><Link className='links' to="/">Home</Link></li>
-          <li><Link className='links' to="/get-app">Get the app</Link></li>
+      <div id="title" aria-level="1" role="heading">Food Express</div>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul id="Nav_items" role="menubar">
+          <li role="none"><Link className='links' to="/" role="menuitem" aria-label="Go to Home page">Home</Link></li>
+          <li role="none"><Link className='links' to="/get-app" role="menuitem" aria-label="Get the mobile app">Get the app</Link></li>
         </ul>
-      </div>
-      <div className="cart-count-container">
-      <div className="cart-count">{cartItems.reduce((total,item)=>total+item.quantity,0)}</div>
-      <Link className='links' to="/cart"><img id="cart" src={CART_LOGO_URL} /></Link>
+      </nav>
+      <div className="cart-count-container" role="button" tabIndex="0" aria-label={`Shopping cart with ${cartItemCount} items`}>
+      <div className="cart-count" aria-live="polite" aria-atomic="true">{cartItemCount}</div>
+      <Link className='links' to="/cart" aria-label={`View shopping cart (${cartItemCount} items)`}><img id="cart" src={CART_LOGO_URL} alt="Shopping cart icon" /></Link>
       </div>
 
-      <div className="header-date">
+      <div className="header-date" role="status" aria-label={`Current date: ${date}`}>
          {date}
       </div>
-    </div>
+    </header>
   );
 };
 
